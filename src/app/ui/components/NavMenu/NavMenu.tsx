@@ -1,1 +1,3 @@
-export const NavMenu = () => {return <h1>Панель администратора</h1>}
+import styles from './NavMenu.module.scss'
+
+export const NavMenu = () => {return <div className={styles.title}>Панель администратора</div>}
