@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import LayoutContainer from '../../ui/components/LayoutContainer';
 import { routesLinks, routesPaths } from '../../../shared/model/data/routesLinks';
+import { MainPage } from '@pages/mainPage/MainPage';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Main</div>,
+        element: <MainPage />,
       },
       {
         path: `/${routesPaths.report}`,

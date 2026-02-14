@@ -1,1 +1,1 @@
-export const NavMenu = () => {return <div>Menu</div>}
+export const NavMenu = () => {return <h1>Панель администратора</h1>}

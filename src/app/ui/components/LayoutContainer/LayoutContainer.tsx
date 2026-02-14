@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Outlet } from 'react-router';
 
 
@@ -7,7 +7,7 @@ import { AppLayout } from '../AppLayout/AppLayout';
 
 const LayoutContainer: FC = () => {
   return (
-    <AppLayout navMenuSlot={<NavMenu />}>
+    <AppLayout headerSlot={<NavMenu />}>
       <Outlet />
     </AppLayout>
   );

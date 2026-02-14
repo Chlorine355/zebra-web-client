@@ -7,11 +7,11 @@ import { AppLayoutPropsType } from './types';
 import styles from './AppLayout.module.scss'
 
 export const AppLayout: FC<AppLayoutPropsType> = (props) => {
-  const { navMenuSlot, children } = props;
+  const { headerSlot, children } = props;
 
   return (
     <div className={styles.container}>
-      {navMenuSlot}
+      {headerSlot}
         <div id={LAYOUT_BODY_ID} className={styles.body}>
           {children}
         </div>
