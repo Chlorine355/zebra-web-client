@@ -1,3 +1,6 @@
+import { Heatmap } from "@widgets/Heatmap/HeatMap";
+import { ReportTable } from "@widgets/ReportTable/ReportTable";
+import { UsersTable } from "@widgets/UsersTable/UsersTable";
 import { Tabs, TabsProps } from "antd";
 
 export const MainPage = () => {
@@ -5,17 +8,17 @@ export const MainPage = () => {
         {
             key: 'reports',
             label: 'Обращения',
-            children: 'Content of Tab Pane 1',
+            children: <ReportTable />,
         },
         {
             key: 'users',
             label: 'Пользователи',
-            children: 'Content of Tab Pane 2',
+            children: <UsersTable />,
         },
         {
             key: 'heatmap',
             label: 'Карта обращений',
-            children: 'Content of Tab Pane 3',
+            children: <Heatmap />,
         },
     ];
     return <Tabs items={items} />
