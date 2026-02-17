@@ -1,7 +1,7 @@
 import { ColumnsType } from "antd/es/table";
 import { RepordCardResponse } from "./types";
 import { getDateTimeString } from "@shared/lib/helpers";
-import { ReportStatusEnum, STATUS_LABELS } from "@shared/model/data/types";
+import { ReportStatusEnum, STATUS_COLORS, STATUS_LABELS } from "@shared/model/data/types";
 
 export const COLUMNS: ColumnsType<RepordCardResponse> = [
     {
@@ -24,6 +24,6 @@ export const COLUMNS: ColumnsType<RepordCardResponse> = [
         key: 'status',
         dataIndex: 'status',
         title: 'Статус',
-        render: (value: ReportStatusEnum) => <div>{STATUS_LABELS[value]}</div>
+        render: (value: ReportStatusEnum) => <div style={{ color: STATUS_COLORS[value] }}>{STATUS_LABELS[value]}</div>
     },
 ]
