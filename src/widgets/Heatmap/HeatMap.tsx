@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { data } from "./model/data/mockData";
 import styles from './HeatMap.module.scss'
+import { loadGeoData } from "./lib/helpers";
+import { CENTER } from "./model/data/data";
 
-const CENTER = [56.311211, 43.963440]
 
 export const Heatmap = () => {
     const [mapInstance, setMapInstance] = useState<ymaps.Map | null>(null);
@@ -30,9 +30,11 @@ export const Heatmap = () => {
             newMap.options.set('openBalloonOnClick', false);
             newMap.cursors.push('pointer');
 
-            window.ymaps.modules.require(['Heatmap'], (Heatmap) => {
-                const heatmap = new Heatmap(data);
-                heatmap.setMap(newMap);
+            loadGeoData().then((response) => {
+                window.ymaps.modules.require(['Heatmap'], (Heatmap) => {
+                    const heatmap = new Heatmap(response.items);
+                    heatmap.setMap(newMap);
+                });
             })
         }
 
