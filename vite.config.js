@@ -13,7 +13,7 @@ const alias = {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {alias},
+  resolve: { alias },
   css: {
     modules: {
       generateScopedName: '[folder]_[local]__[hash:base64:5]',
