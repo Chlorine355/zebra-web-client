@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@yandex/ymaps3-types": "^1.0.19487230",
     "antd": "^6.4.2",
     "effector": "^23.4.4",
     "effector-react": "^23.3.0",
