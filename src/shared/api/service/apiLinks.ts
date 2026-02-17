@@ -5,6 +5,7 @@ export const apiLinks = {
     },
     users: {
         current: '/users/current',
+        all: '/users/all',
         notifications: '/users/notifications'
     },
     reports: {
