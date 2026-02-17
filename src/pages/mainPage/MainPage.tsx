@@ -17,7 +17,7 @@ export const MainPage = () => {
         },
         {
             key: 'heatmap',
-            label: 'Карта обращений',
+            label: 'Тепловая карта обращений',
             children: <Heatmap />,
         },
     ];
