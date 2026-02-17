@@ -5806,7 +5806,7 @@ declare namespace ymaps {
       context?: object,
     ): typeof modules;
 
-    function require(modules: string | string[]): vow.Promise;
+    function require(modules: string | string[], callback: (module: any) => void): vow.Promise;
 
     function isDefined(module: string): boolean;
   }
