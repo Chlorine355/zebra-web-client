@@ -27,7 +27,7 @@
     "skipLibCheck": true,
 
     "incremental": true,
-
+    "typeRoots": ["./node_modules/@types", "./node_modules/@yandex/ymaps3-types"],
     "paths": {
       "@app": ["././src/app"],
       "@app/*": ["./src/app/*"],
@@ -41,7 +41,7 @@
       "@pages/*": ["./src/pages/*"],
       "@shared": ["./src/shared"],
       "@shared/*": ["./src/shared/*"],
-
+      "ymaps3": ["./node_modules/@yandex/ymaps3-types"],
       "react": ["./node_modules/@types/react"]
     },
   },
