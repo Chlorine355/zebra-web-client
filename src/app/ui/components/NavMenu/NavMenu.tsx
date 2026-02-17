@@ -9,11 +9,17 @@ import { routesLinks } from '@shared/model/data/routesLinks';
 export const NavMenu = () => {
     const currentUser = useUnit($currentUser);
     const navigate = useNavigate();
+
     const logoutHandler = () => {
         resetAuthInstanceEv();
         setCurrentUserEv(null);
         navigate(routesLinks.root)
     }
+
+    const loginHandler = () => {
+        navigate(routesLinks.login)
+    }
+
     return <div className={styles.wrapper}>
         <div className={styles.title}>Панель администратора</div>
         {currentUser?.username
@@ -21,6 +27,6 @@ export const NavMenu = () => {
                 {currentUser?.username}
                 <Button onClick={logoutHandler} variant={'link'}>Выйти</Button>
             </div>
-            : null}
+            : <Button onClick={loginHandler} variant={'link'}>Войти</Button>}
     </div>
 }
