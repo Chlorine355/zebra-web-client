@@ -5,7 +5,7 @@ export const COLUMNS: ColumnsType<UserType> = [
     {
         key: 'id',
         dataIndex: 'id',
-        title: 'ID'
+        title: 'ID',
     },
     {
         key: 'username',
@@ -15,7 +15,8 @@ export const COLUMNS: ColumnsType<UserType> = [
     {
         key: 'is_admin',
         dataIndex: 'is_admin',
-        title: 'Роль'
+        title: 'Роль',
+        render: (value: boolean) => value ? 'Администратор' : 'Пользователь',
     },
     {
         key: 'daily_reports',
@@ -25,12 +26,16 @@ export const COLUMNS: ColumnsType<UserType> = [
     {
         key: 'receives_notifications',
         dataIndex: 'receives_notifications',
-        title: 'Включены уведомления'
+        title: 'Включены уведомления',
+        render: (value: boolean) => value ? 'Да' : 'Нет',
+
     },
     {
         key: 'is_active',
         dataIndex: 'is_active',
-        title: 'Статус'
+        title: 'Статус',
+        render: (value: boolean) => value ? 'Активен' : 'Удалён',
+
     },
 
 ]
