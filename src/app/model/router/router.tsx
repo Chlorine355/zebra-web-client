@@ -5,6 +5,7 @@ import LayoutContainer from '../../ui/components/LayoutContainer';
 import { routesLinks, routesPaths } from '../../../shared/model/data/routesLinks';
 import { MainPage } from '@pages/mainPage/MainPage';
 import { LoginPage } from '@pages/loginPage/LoginPage';
+import { ReportPage } from '@pages/reportPage/ReportPage';
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,8 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: `/${routesPaths.report}`,
-        element: <div>Report</div>,
+        path: `/${routesPaths.report}/:id`,
+        element: <ReportPage />,
       },
       {
         path: `/${routesPaths.pageNotFound}`,

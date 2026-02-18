@@ -1,3 +1,4 @@
+import { ReportStatusEnum } from "@shared/model/data/types";
 import { apiLinks } from "./apiLinks";
 import { axiosInstance } from "./baseInstance";
 
@@ -52,5 +53,8 @@ export const apiService = {
         stats: () => {
             return instance().get(apiLinks.reports.stats)
         },
+        changeStatus: (newStatus: ReportStatusEnum, reportId: number) => {
+            return instance().patch(apiLinks.reports.changeStatus, {}, { params: { new_status: newStatus, report_id: reportId } })
+        }
     }
 }
