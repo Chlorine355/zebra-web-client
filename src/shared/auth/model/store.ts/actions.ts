@@ -1,9 +1,9 @@
 import { createEvent } from "effector";
 
 export type AuthInstanceType = {
-    token?: string;
-    username?: string;
-    password?: string;
+    token: string | null;
+    username: string | null;
+    password: string | null;
 }
 
 export const resetAuthInstanceEv = createEvent();
@@ -18,4 +18,3 @@ export type UserType = {
     username: string;
 };
 
-export const setCurrentUserEv = createEvent<UserType | null>();

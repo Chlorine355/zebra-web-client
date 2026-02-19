@@ -1,7 +1,7 @@
 import { ColumnsType } from "antd/es/table";
 import { RepordCardResponse } from "./types";
 import { getDateTimeString } from "@shared/lib/helpers";
-import { ReportStatusEnum, STATUS_COLORS, STATUS_LABELS } from "@shared/model/data/types";
+import { ReportStatusEnum } from "@shared/model/data/types";
 import { Link } from "react-router";
 import { routesLinks } from "@shared/model/data/routesLinks";
 import { StatusBadge } from "@widgets/StatusBadge/StatusBadge";

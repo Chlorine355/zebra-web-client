@@ -1,18 +1,17 @@
-import { $currentUser } from '@shared/auth/model/store.ts/store'
+import { $authInstance } from '@shared/auth/model/store.ts/store'
 import styles from './NavMenu.module.scss'
-import { useUnit } from 'effector-react';
+import { useStoreMap } from 'effector-react';
 import { Button } from 'antd';
-import { resetAuthInstanceEv, setCurrentUserEv } from '@shared/auth/model/store.ts/actions';
+import { clearAuthInstanceEv } from '@shared/auth/model/store.ts/actions';
 import { useNavigate } from 'react-router';
 import { routesLinks } from '@shared/model/data/routesLinks';
 
 export const NavMenu = () => {
-    const currentUser = useUnit($currentUser);
+    const username = useStoreMap({store: $authInstance, keys: [], fn: (store) => store.username});
     const navigate = useNavigate();
 
     const logoutHandler = () => {
-        resetAuthInstanceEv();
-        setCurrentUserEv(null);
+        clearAuthInstanceEv();
         navigate(routesLinks.root)
     }
 
@@ -22,9 +21,9 @@ export const NavMenu = () => {
 
     return <div className={styles.wrapper}>
         <div className={styles.title}>Панель администратора</div>
-        {currentUser?.username
+        {username
             ? <div className={styles.right}>
-                {currentUser?.username}
+                {username}
                 <Button onClick={logoutHandler} variant={'link'}>Выйти</Button>
             </div>
             : <Button onClick={loginHandler} variant={'link'}>Войти</Button>}

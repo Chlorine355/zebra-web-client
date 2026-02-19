@@ -1,15 +1,28 @@
 import { createStore } from "effector";
-import { setAuthInstanceEv, AuthInstanceType, resetAuthInstanceEv, clearAuthInstanceEv, UserType, setCurrentUserEv } from "./actions";
+import { setAuthInstanceEv, AuthInstanceType, resetAuthInstanceEv, clearAuthInstanceEv } from "./actions";
 
 
+const INITIAL_VALUE = {
+    token: localStorage.getItem('token') ,
+    username: localStorage.getItem('username') ,
+    password: localStorage.getItem('password') ,
+}
 // saved credentials
-export const $authInstance = createStore<AuthInstanceType | null>(null)
+export const $authInstance = createStore<AuthInstanceType>(INITIAL_VALUE)
     .on(setAuthInstanceEv, (store, payload) => ({ ...store, ...payload }))
-    .on(clearAuthInstanceEv, () => ({}))
+    .on(clearAuthInstanceEv, () => ({
+        token: null,
+        username: null,
+        password: null,
+    }))
     .reset(resetAuthInstanceEv)
+
+$authInstance.watch(({ username, password, token }) => {
+    localStorage.setItem('username', username || '');
+    localStorage.setItem('password', password || '');
+    localStorage.setItem('token', token || '');
+})
 
 
 export const getAuthorization = () =>
     `Bearer ${$authInstance.getState()?.token}`;
-
-export const $currentUser = createStore<UserType | null>(null).on(setCurrentUserEv, (_, payload) => payload);
