@@ -32,5 +32,5 @@ jobs:
         REPO: self
         BRANCH: build
         FOLDER: dist
-        TARGET_DIR: dist
+        # TARGET_DIR: dist
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
