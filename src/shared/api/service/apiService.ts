@@ -41,8 +41,8 @@ export const apiService = {
                 }
             })
         },
-        getAll: (status: string | undefined) => {
-            return instance().get(apiLinks.reports.all, { params: { status } })
+        getAll: ({ filterStatus: status, page }: { filterStatus: string | null, page: number }) => {
+            return instance().get(apiLinks.reports.all, { params: { status, page } })
         },
         getAllGeo: () => {
             return instance().get(apiLinks.reports.geo)
