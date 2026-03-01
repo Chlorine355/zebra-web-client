@@ -4,7 +4,7 @@ import { useState } from "react"
 import styles from './LoginPage.module.scss'
 import { apiService } from "@shared/api/service/apiService"
 import { setAuthInstanceEv } from "@shared/auth/model/store.ts/actions"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { routesLinks } from "@shared/model/data/routesLinks"
 
 export const LoginPage = () => {
@@ -33,5 +33,6 @@ export const LoginPage = () => {
             <Input value={password} onChange={(event) => setPassword(event.target.value)} type={'password'} />
         </label>
         <Button onClick={loginAttempt}>Войти</Button>
+        <div>Ещё нет аккаунта? <Link to={routesLinks.signup}>Зарегистрироваться</Link></div>
     </div>
 }
