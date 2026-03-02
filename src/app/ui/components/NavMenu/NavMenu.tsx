@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 import { routesLinks } from '@shared/model/data/routesLinks';
 
 export const NavMenu = () => {
-    const username = useStoreMap({store: $authInstance, keys: [], fn: (store) => store.username});
+    const email = useStoreMap({ store: $authInstance, keys: [], fn: (store) => store.email });
     const navigate = useNavigate();
 
     const logoutHandler = () => {
@@ -21,9 +21,9 @@ export const NavMenu = () => {
 
     return <div className={styles.wrapper}>
         <div className={styles.title}>Панель администратора</div>
-        {username
+        {email
             ? <div className={styles.right}>
-                {username}
+                {email}
                 <Button onClick={logoutHandler} variant={'link'}>Выйти</Button>
             </div>
             : <Button onClick={loginHandler} variant={'link'}>Войти</Button>}

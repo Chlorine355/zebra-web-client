@@ -12,7 +12,7 @@ export type UserType = {
     is_admin: boolean;
     is_active: boolean;
     receives_notifications: boolean;
-    username: string;
+    email: string;
 };
 
 export const STATUS_LABELS = {
