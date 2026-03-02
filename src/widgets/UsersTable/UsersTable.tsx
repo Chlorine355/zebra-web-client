@@ -3,7 +3,6 @@ import { UserType } from "@shared/model/data/types";
 import { COLUMNS } from "./model/data/data";
 import { useEffect, useState } from "react";
 import { loadUsersData } from "./lib/helpers";
-import styles from './UsersTable.module.scss'
 import { PAGE_SIZE } from "@shared/model/data/const";
 
 export const UsersTable = () => {
