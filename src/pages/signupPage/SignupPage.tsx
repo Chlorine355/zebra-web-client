@@ -15,11 +15,11 @@ export const SignupPage = () => {
     const navigate = useNavigate()
 
     const signup = () => {
-        apiService.auth.signup({ username: email, password }).then(() => {
+        apiService.auth.signup({ email: email, password }).then(() => {
             // on successful signup, retrieve access token, redirect to tabs
             apiService.auth.authenticate({ username: email, password }).then(({ data }) => {
                 setAuthInstanceEv({
-                    username: email, password, token: data.access_token
+                    email: email, password, token: data.access_token
                 })
                 navigate(routesLinks.main);
             })

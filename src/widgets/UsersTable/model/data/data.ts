@@ -8,8 +8,8 @@ export const COLUMNS: ColumnsType<UserType> = [
         title: 'ID',
     },
     {
-        key: 'username',
-        dataIndex: 'username',
+        key: 'email',
+        dataIndex: 'email',
         title: 'Имя пользователя'
     },
     {

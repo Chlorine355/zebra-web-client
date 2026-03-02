@@ -3,22 +3,22 @@ import { setAuthInstanceEv, AuthInstanceType, resetAuthInstanceEv, clearAuthInst
 
 
 const INITIAL_VALUE = {
-    token: localStorage.getItem('token') ,
-    username: localStorage.getItem('username') ,
-    password: localStorage.getItem('password') ,
+    token: localStorage.getItem('token'),
+    email: localStorage.getItem('email'),
+    password: localStorage.getItem('password'),
 }
 // saved credentials
 export const $authInstance = createStore<AuthInstanceType>(INITIAL_VALUE)
     .on(setAuthInstanceEv, (store, payload) => ({ ...store, ...payload }))
     .on(clearAuthInstanceEv, () => ({
         token: null,
-        username: null,
+        email: null,
         password: null,
     }))
     .reset(resetAuthInstanceEv)
 
-$authInstance.watch(({ username, password, token }) => {
-    localStorage.setItem('username', username || '');
+$authInstance.watch(({ email, password, token }) => {
+    localStorage.setItem('email', email || '');
     localStorage.setItem('password', password || '');
     localStorage.setItem('token', token || '');
 })
