@@ -63,7 +63,6 @@ export const ReportPage = () => {
                     <span>{data.address || 'Нет данных'}</span>
                 </div>
                 <div className={styles.item}>
-                    {/* TODO: editable */}
                     <span>Госномер (автоматически)</span>
                     <span>{data.gosnomer || 'Нет данных'}</span>
                 </div>
