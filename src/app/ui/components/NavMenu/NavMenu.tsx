@@ -1,0 +1,1 @@
+export const NavMenu = () => {return <div>Menu</div>}
