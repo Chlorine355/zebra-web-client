@@ -2,13 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import styles from './HeatMap.module.scss'
 import { loadGeoData } from "./lib/helpers";
 import { CENTER } from "./model/data/data";
+import { Button } from "antd";
 
 
 export const Heatmap = () => {
     const [mapInstance, setMapInstance] = useState<ymaps.Map | null>(null);
+    const [heatmapInstance, setHeatmapInstance] = useState<any>(null);
+
     const mapRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
+    const initAll = () => {
         function initMap() {
             if (mapInstance || !mapRef.current) return;
             const newMap = new window.ymaps.Map(
@@ -34,6 +37,7 @@ export const Heatmap = () => {
                 window.ymaps.modules.require(['Heatmap'], (Heatmap) => {
                     const heatmap = new Heatmap(response.items);
                     heatmap.setMap(newMap);
+                    setHeatmapInstance(heatmap)
                 });
             })
         }
@@ -48,7 +52,17 @@ export const Heatmap = () => {
                 setMapInstance(null);
             }
         };
-    }, [mapRef.current]);
+    }
 
-    return <div className={styles.map} ref={mapRef}></div>
+    useEffect(initAll, [mapRef.current]);
+
+    const reloadHandler = () => {
+        loadGeoData().then((response) => {
+            window.ymaps.modules.require(['Heatmap'], () => {
+                heatmapInstance.setData(response.items);
+            });
+        })
+    }
+
+    return <><Button className={styles.button} onClick={reloadHandler}>Обновить</Button><div className={styles.map} ref={mapRef}></div></>
 }
