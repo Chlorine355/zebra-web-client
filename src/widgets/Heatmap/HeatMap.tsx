@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { data } from "./data";
+import { data } from "./model/data/mockData";
+import styles from './HeatMap.module.scss'
 
 const CENTER = [56.311211, 43.963440]
 
@@ -25,15 +26,12 @@ export const Heatmap = () => {
 
             setMapInstance(newMap);
 
-            // Отключаем поведение, которое открывает балун с маршрутом ("Как добраться")
-            // routeEditor — поведение, отвечающее за построение маршрутов
             newMap.behaviors.disable('routeEditor');
             newMap.options.set('openBalloonOnClick', false);
             newMap.cursors.push('pointer');
 
             window.ymaps.modules.require(['Heatmap'], (Heatmap) => {
                 const heatmap = new Heatmap(data);
-                console.log(heatmap)
                 heatmap.setMap(newMap);
             })
         }
@@ -50,5 +48,5 @@ export const Heatmap = () => {
         };
     }, [mapRef.current]);
 
-    return <div style={{ height: 600, width: '100%' }} ref={mapRef}></div>
+    return <div className={styles.map} ref={mapRef}></div>
 }
