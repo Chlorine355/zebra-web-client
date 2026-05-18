@@ -40,6 +40,9 @@ export const apiService = {
         getAll: () => {
             return instance().get(apiLinks.reports.all)
         },
+        getAllGeo: () => {
+            return instance().get(apiLinks.reports.geo)
+        },
         getOne: (data: { id: number }) => {
             return instance().get(apiLinks.reports.one, { params: { report_id: data.id } })
         },
