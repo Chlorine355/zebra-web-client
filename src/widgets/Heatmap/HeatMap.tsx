@@ -1,14 +1,54 @@
-import { LOCATION } from "@shared/lib/data";
-import { YMap, YMapDefaultFeaturesLayer, YMapDefaultSchemeLayer } from "@shared/lib/ymaps3";
+import { useEffect, useRef, useState } from "react";
+import { data } from "./data";
+
+const CENTER = [56.311211, 43.963440]
 
 export const Heatmap = () => {
+    const [mapInstance, setMapInstance] = useState<ymaps.Map | null>(null);
+    const mapRef = useRef<HTMLDivElement | null>(null);
 
-    return (
-        <div style={{ width: '100%', height: '500px' }}>
-            <YMap location={LOCATION} mode="vector">
-                <YMapDefaultSchemeLayer />
-                <YMapDefaultFeaturesLayer />
-            </YMap>
-        </div>
-    );
+    useEffect(() => {
+        function initMap() {
+            if (mapInstance || !mapRef.current) return;
+            const newMap = new window.ymaps.Map(
+                mapRef.current,
+                {
+                    type: 'yandex#map',
+                    center: CENTER,
+                    zoom: 12,
+                    controls: [],
+                },
+                {
+                    projection: window.ymaps.projection.sphericalMercator,
+                },
+            );
+
+            setMapInstance(newMap);
+
+            // Отключаем поведение, которое открывает балун с маршрутом ("Как добраться")
+            // routeEditor — поведение, отвечающее за построение маршрутов
+            newMap.behaviors.disable('routeEditor');
+            newMap.options.set('openBalloonOnClick', false);
+            newMap.cursors.push('pointer');
+
+            window.ymaps.modules.require(['Heatmap'], (Heatmap) => {
+                const heatmap = new Heatmap(data);
+                console.log(heatmap)
+                heatmap.setMap(newMap);
+            })
+        }
+
+        if (!mapInstance) {
+            window.ymaps.ready(initMap);
+        }
+
+        return () => {
+            if (mapInstance) {
+                mapInstance.destroy();
+                setMapInstance(null);
+            }
+        };
+    }, [mapRef.current]);
+
+    return <div style={{ height: 600, width: '100%' }} ref={mapRef}></div>
 }
