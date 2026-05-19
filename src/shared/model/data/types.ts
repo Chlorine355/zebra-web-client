@@ -1,3 +1,5 @@
+import { launch } from "effector";
+
 export enum ReportStatusEnum {
     pending = 'pending',
     deniedByAdmin = 'denied_by_admin',
@@ -29,4 +31,30 @@ export const STATUS_COLORS = {
     [ReportStatusEnum.processing]: 'gray',
     [ReportStatusEnum.acceptedAtGAI]: 'green',
     [ReportStatusEnum.deniedAtGAI]: 'orange',
+}
+
+export const STATUS_OPTIONS = Object.entries(STATUS_LABELS).map(([key, value]) => ({
+    value: key,
+    label: value,
+}))
+
+export type ReportResponse = {
+    // generated on creation
+    id: number,
+    creation_date: string;
+    // from user
+    violation: string;
+    lat: number;
+    lon: number;
+    datetime: string;
+    description: string;
+    assets: {
+        type: 'photo' | 'video',
+        url: string,
+    }[];
+    // set by backend
+    status: ReportStatusEnum;
+    // created by smart backend
+    gosnomer: string | null;
+    address: string | null;
 }

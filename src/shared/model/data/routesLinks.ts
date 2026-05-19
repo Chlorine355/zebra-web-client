@@ -11,7 +11,7 @@ export const routesLinks = {
   login: `/${routesPaths.login}`,
   main: `/${routesPaths.main}`,
   report(id: number) {
-    return `/${routesPaths.report}?$id=${id}`;
+    return `/${routesPaths.report}/${id}`;
   },
   pageNotFound: `/${routesPaths.pageNotFound}`,
 };

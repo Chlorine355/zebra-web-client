@@ -13,6 +13,7 @@ export const apiLinks = {
         geo: '/reports/geo',
         one: '/reports/one_by_id',
         create: '/reports/create',
-        stats: '/reports/stats'
+        stats: '/reports/stats',
+        changeStatus: '/reports/change_status'
     }
 }
