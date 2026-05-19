@@ -6,7 +6,10 @@ import { loadReportData } from "./lib/helpers";
 import { getDateTimeString } from "@shared/lib/helpers";
 import { Button, Select } from "antd";
 import { apiService } from "@shared/api/service/apiService";
+import { Image } from 'antd';
 
+
+const getImageSrc = (uri: string) => `${import.meta.env.VITE_BACKEND_URL}/assets/image?filename=${uri}`
 
 export const ReportPage = () => {
     const { id } = useParams();
@@ -64,7 +67,18 @@ export const ReportPage = () => {
                     <span>Госномер (автоматически)</span>
                     <span>{data.gosnomer || 'Нет данных'}</span>
                 </div>
-                {/* TODO: assets */}
+                <div className={styles.horizontal}>
+
+                    <Image.PreviewGroup>
+                        {data.assets.map((asset) =>
+                            <Image
+                                key={asset.uri}
+                                alt="svg image"
+                                width={200}
+                                src={getImageSrc(asset.uri)}
+                            />)}
+                    </Image.PreviewGroup>
+                </div>
             </div>
         </div>
         : null;

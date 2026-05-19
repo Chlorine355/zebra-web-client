@@ -50,7 +50,7 @@ export type ReportResponse = {
     description: string;
     assets: {
         type: 'photo' | 'video',
-        url: string,
+        uri: string,
     }[];
     // set by backend
     status: ReportStatusEnum;
