@@ -47,16 +47,16 @@ export const ReportPage = () => {
                     <span>{data.violation}</span>
                 </div>
                 <div className={styles.item}>
-                    <span>Геопозиция</span>
-                    <span>{data.lat} {data.lon}</span>
-                </div>
-                <div className={styles.item}>
                     <span>Дата и время</span>
                     <span>{getDateTimeString(new Date(data.datetime))}</span>
                 </div>
                 <div className={styles.item}>
                     <span>Описание</span>
                     <span>{data.description}</span>
+                </div>
+                <div className={styles.item}>
+                    <span>Геопозиция</span>
+                    <span>{data.lat} {data.lon}</span>
                 </div>
                 <div className={styles.item}>
                     <span>Ближайший адрес (автоматически)</span>
