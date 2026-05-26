@@ -7,4 +7,4 @@ export type RepordCardResponse = {
     status: ReportStatusEnum;
 }
 
-export type ReportCardsResponse = { reports: RepordCardResponse[] };
+export type ReportCardsResponse = { reports: RepordCardResponse[], total: number };
