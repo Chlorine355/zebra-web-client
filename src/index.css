@@ -13,3 +13,9 @@ body {
 .ant-tabs-content-holder {
     height: 100%;
 }
+
+.ant-tabs-tabpane {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

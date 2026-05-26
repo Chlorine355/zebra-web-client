@@ -13,8 +13,8 @@ export const apiService = {
         setNotifications: (data: { receives_notifications: boolean }) => {
             return instance().post(apiLinks.users.notifications, data)
         },
-        all: () => {
-            return instance().get(apiLinks.users.all)
+        all: (page: number) => {
+            return instance().get(apiLinks.users.all, { params: { page } })
         }
     },
     auth: {
