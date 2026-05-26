@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+
+  padding: 20px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  gap: 12px;
+  background-color: white;
+}
+
+.body {
+  position: relative;
+
+  overflow: hidden;
+  display: grid;
+}
