@@ -22,6 +22,6 @@ export const ReportTable = () => {
             <Select allowClear placeholder={'Статус'} className={styles.select} options={STATUS_OPTIONS} value={filterStatus} onChange={setFilterStatus} />
             <Button onClick={load}>Обновить</Button>
         </div >
-        <Table dataSource={data ?? undefined} columns={COLUMNS} locale={{ emptyText: <Empty description="Нет данных" /> }} />
+        <Table scroll={{ x: 0, y: 400 }} dataSource={data ?? undefined} columns={COLUMNS} locale={{ emptyText: <Empty description="Нет данных" /> }} />
     </>
 }

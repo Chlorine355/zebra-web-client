@@ -14,5 +14,5 @@ export const UsersTable = () => {
         })
     }
     useEffect(load, [])
-    return <><Button className={styles.button} onClick={load}>Обновить</Button><Table dataSource={data ?? []} columns={COLUMNS} locale={{ emptyText: <Empty description="Нет данных" /> }} /></>
+    return <><Button className={styles.button} onClick={load}>Обновить</Button><Table scroll={{ x: 0, y: 400 }} dataSource={data ?? []} columns={COLUMNS} locale={{ emptyText: <Empty description="Нет данных" /> }} /></>
 }
