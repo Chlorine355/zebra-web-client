@@ -1,6 +1,7 @@
 export const routesPaths = {
   root: '/',
   login: 'login',
+  signup: 'signup',
   main: 'main',
   report: 'report',
   pageNotFound: '404',
@@ -9,6 +10,7 @@ export const routesPaths = {
 export const routesLinks = {
   root: '/',
   login: `/${routesPaths.login}`,
+  signup: `/${routesPaths.signup}`,
   main: `/${routesPaths.main}`,
   report(id: number) {
     return `/${routesPaths.report}/${id}`;
