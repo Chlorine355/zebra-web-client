@@ -8,15 +8,15 @@ import { Link, useNavigate } from "react-router"
 import { routesLinks } from "@shared/model/data/routesLinks"
 
 export const LoginPage = () => {
-    const [username, setUsername] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
     const navigate = useNavigate()
 
     const loginAttempt = () => {
-        apiService.auth.authenticate({ username, password }).then(({ data }) => {
+        apiService.auth.authenticate({ email, password }).then(({ data }) => {
             setAuthInstanceEv({
-                username, password, token: data.access_token
+                email, password, token: data.access_token
             })
             navigate(routesLinks.main)
         }).catch(() => alert('Неверный логин или пароль'))
@@ -26,7 +26,7 @@ export const LoginPage = () => {
         <h1>Вход</h1>
         <label>
             Имя пользователя
-            <Input value={username} onChange={(event) => setUsername(event.target.value)} />
+            <Input value={email} onChange={(event) => setEmail(event.target.value)} />
         </label>
         <label>
             Пароль

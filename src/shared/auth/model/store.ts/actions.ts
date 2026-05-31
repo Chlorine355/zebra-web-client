@@ -2,7 +2,7 @@ import { createEvent } from "effector";
 
 export type AuthInstanceType = {
     token: string | null;
-    username: string | null;
+    email: string | null;
     password: string | null;
 }
 
@@ -15,6 +15,6 @@ export type UserType = {
     id: number;
     is_admin: boolean;
     receives_notifications: boolean;
-    username: string;
+    email: string;
 };
 
