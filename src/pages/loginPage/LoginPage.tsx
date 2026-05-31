@@ -14,7 +14,7 @@ export const LoginPage = () => {
     const navigate = useNavigate()
 
     const loginAttempt = () => {
-        apiService.auth.authenticate({ email, password }).then(({ data }) => {
+        apiService.auth.authenticate({ username: email, password }).then(({ data }) => {
             setAuthInstanceEv({
                 email, password, token: data.access_token
             })
