@@ -50,6 +50,13 @@ export const apiService = {
         getOne: (data: { id: number }) => {
             return instance().get(apiLinks.reports.one, { params: { report_id: data.id } })
         },
+        export: async (data: { id: number }) => {
+            const blob = (await instance().get(apiLinks.reports.export, { params: { report_id: data.id }, responseType: 'blob' })).data;
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `Обращение ${data.id}.pdf`;
+            link.click();
+        },
         stats: () => {
             return instance().get(apiLinks.reports.stats)
         },

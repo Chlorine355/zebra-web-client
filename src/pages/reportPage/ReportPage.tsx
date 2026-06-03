@@ -37,6 +37,7 @@ export const ReportPage = () => {
         ? <div className={styles.wrapper}>
             <div className={styles.column}>
                 <Button onClick={() => navigate(-1)} className={styles.button}>Назад</Button>
+                <Button onClick={() => id && apiService.reports.export({ id: Number(id) })} className={styles.button}>Экспорт</Button>
                 <h2>Обращение №{id}</h2>
                 <div className={styles.horizontal}>
                     <span>Статус</span>
